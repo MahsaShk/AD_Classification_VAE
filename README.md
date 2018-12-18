@@ -17,6 +17,8 @@ If you find our mesh dataset useful for your research, please first cite our pap
     Title = {Sub-cortical Brain Structure Segmentation Using F-CNNs},
     Booktitle = {International Symposium on Biomedical Imaging ({ISBI})},
     Year = {2016}
-}```
+}
 
-ur mes
+```
+
+Also, please make sure to follow ADNI Data Sharing and Publication Policy [link](https://adni.loni.usc.edu/wp-content/uploads/how_to_apply/ADNI_DSP_Policy.pdf)
