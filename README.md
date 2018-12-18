@@ -10,15 +10,19 @@ The original data comes from the popular brain imaging dataset in Alzheimer’s 
 The folder data includes 4 sub-folders (NC, AD, EMCI, LMCI). Each folder contains two sub-directories (17 and 53). All the spectral meshes in vtk format are saved here.
 
 # Citation
-If you find our mesh dataset useful for your research, please first cite our paper:
+If you find our mesh dataset useful for your research, please first cite the following paper and also please make sure to follow ADNI Data Sharing and Publication Policy available at [link](https://adni.loni.usc.edu/wp-content/uploads/how_to_apply/ADNI_DSP_Policy.pdf)
 
-```@inproceedings{shakeri2016subcortical,
-    Author = {Shakeri, Mahsa and Tsogkas, Stavros and Ferrante, Enzo and Lippe, Sarah and Kadoury, Samuel and Paragios, Nikos and Kokkinos, Iasonas},
-    Title = {Sub-cortical Brain Structure Segmentation Using F-CNNs},
-    Booktitle = {International Symposium on Biomedical Imaging ({ISBI})},
-    Year = {2016}
+```@inproceedings{shakeri2016Spectral,
+author="Shakeri, Mahsa and Lombaert, Herve and Tripathi, Shashank and Kadoury, Samuel",
+editor="Reuter, Martin and Wachinger, Christian and Lombaert, Herv{\'e}",
+title="Deep Spectral-Based Shape Features for Alzheimer's Disease Classification",
+booktitle="Spectral and Shape Analysis in Medical Imaging",
+year="2016",
+publisher="Springer International Publishing",
+address="Cham",
+pages="15--24",
+isbn="978-3-319-51237-2"
 }
-
 ```
 
-Also, please make sure to follow ADNI Data Sharing and Publication Policy [link](https://adni.loni.usc.edu/wp-content/uploads/how_to_apply/ADNI_DSP_Policy.pdf)
+
