@@ -9,13 +9,14 @@ The original data comes from the popular brain imaging dataset in Alzheimer’s 
 
 The folder data includes 4 sub-folders (NC, AD, EMCI, LMCI). Each folder contains two sub-directories (17 and 53). All the spectral meshes in vtk format are saved here.
 
-# Cite
+# Citation
 If you find our mesh dataset useful for your research, please first cite our paper:
 
-"@inproceedings{shakeri2016subcortical,
+```@inproceedings{shakeri2016subcortical,
     Author = {Shakeri, Mahsa and Tsogkas, Stavros and Ferrante, Enzo and Lippe, Sarah and Kadoury, Samuel and Paragios, Nikos and Kokkinos, Iasonas},
     Title = {Sub-cortical Brain Structure Segmentation Using F-CNNs},
     Booktitle = {International Symposium on Biomedical Imaging ({ISBI})},
     Year = {2016}
-}"
+}```
 
+ur mes
