@@ -7,7 +7,7 @@ Alzheimer’s disease (AD) and mild cognitive impairment (MCI) are the most prev
 # Dataset
 The original data comes from the popular brain imaging dataset in Alzheimer’s disease, namely the Alzheimer’s Disease Neuroimaging Initiative (ADNI: adni.loni.usc.edu). For this study, a subset of latest 1.5 T MR images is used including 150 normal controls (NC), 90 AD patients, 160 early MCI (EMCI), and 160 individuals with late MCI (LMCI). Left (label number 17) and right (label number 53)hippocampi were segmented using FSL-FIRST automatic segmentation software package. Some subjects were removed because of the failure in the preprocessing steps. Therefore, in total, 142 normal controls (NC), 83 AD patients, 154 early MCI (EMCI), and 150 individuals with late MCI (LMCI) were included in our analysis.
 
-The folder data includes 4 sub-folders (NC, AD, EMCI, LMCI). Each folder contains two sub-directories (17 and 53). All the spectral meshes in vtk format are saved here.
+The folder data includes 4 sub-folders (NC, AD, EMCI, LMCI). Each folder contains two sub-directories (17 and 53). All of the spectral meshes are saved here in vtk format .
 
 # Citation
 If you find our mesh dataset useful for your research, please first cite the following paper and also please make sure to follow ADNI Data Sharing and Publication Policy available at [link](https://adni.loni.usc.edu/wp-content/uploads/how_to_apply/ADNI_DSP_Policy.pdf).
