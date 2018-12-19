@@ -30,7 +30,7 @@ def meshFeatures(input_Dir):
             l=f.readline()
             l=f.readline()
 
-            #Extract number of vertex points 
+            # Extract number of vertex points 
             ind1=l.find('POINTS ')
             ind2=l.find('float')
             ind_start = ind1 +7
