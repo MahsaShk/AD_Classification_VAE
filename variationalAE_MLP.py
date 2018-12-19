@@ -140,7 +140,7 @@ if __name__ == '__main__':
     score = vae.evaluate({'input': x_test}, {'vae_output': x_test, 'classification_out': to_categorical(y_test-1)}, batch_size=batch_size)
     print(vae.metrics_names)
     print (" ", score)
-    print ("\nClassification accuracy on test set is : ", score[3])
+    print ("\nClassification accuracy on test set is : ", score[3]) 
 
     
  
