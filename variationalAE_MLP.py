@@ -1,10 +1,8 @@
-'''This script demonstrates how to build a variational autoencoder with Keras.
-Reference: "Auto-Encoding Variational Bayes" https://arxiv.org/abs/1312.6114
+''' This scipt uses a deep variational autoencoder (VAE) to learn a latent feature
+    representation from the low-level features and trains a multi-layer perceptron 
+    (MLP) for two class classification purpose.
 '''
 import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-
 from keras.layers import Input, Dense, Lambda, Dropout
 from keras.models import Model
 from keras import backend as K
@@ -14,23 +12,14 @@ from keras.callbacks import (EarlyStopping,
                              LearningRateScheduler, 
                              ModelCheckpoint,
                              History)
-from keras.regularizers import l2, l2
-
+from keras.regularizers import l2
 import time
 import glob
-from sklearn.cross_validation import train_test_split, LeaveOneOut
-from sklearn.datasets import fetch_lfw_people
-from sklearn.grid_search import GridSearchCV
+from sklearn.cross_validation import train_test_split
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, confusion_matrix
-from sklearn.decomposition import RandomizedPCA, KernelPCA, PCA, FastICA
-from sklearn.svm import SVC
-from numpy import genfromtxt
 from sklearn import preprocessing
 from sklearn.utils import shuffle
 from sklearn.metrics import precision_recall_fscore_support
-from sklearn.grid_search import ParameterGrid
-from sklearn.cross_validation import StratifiedKFold
-from sklearn.cross_validation import PredefinedSplit
 
 
 if __name__ == '__main__':
@@ -42,14 +31,14 @@ if __name__ == '__main__':
     n_classes = 2
 
 
-    # extract mesh coordinates from csv files
+    # Extract mesh coordinates from csv files
     dataNC = np.genfromtxt(pathNC,delimiter=',')
     datap = np.genfromtxt(pathp,delimiter=',')
     print(" normal data is of size ", dataNC.shape )
     print(" patient data is of size ", datap.shape )
     data = np.vstack((dataNC,datap))
 
-    # Define targets
+    # Define target
     nb_s_NC = dataNC.shape[0]
     nb_s_p = datap.shape[0]   
     target_NC = 1*np.ones((nb_s_NC,1))
@@ -59,7 +48,7 @@ if __name__ == '__main__':
 
     np.savetxt("./data/target.csv", target, delimiter=",")
     np.savetxt("./data/data.csv", data, delimiter=",")
-    print("---------data and target created----------- ")
+    print("---------data and target are created------- ")
 
     print("------------permutation starts-------------")
     X,  y = shuffle(data, target, random_state=0) # shuffles the rows. random_state == seed
@@ -70,7 +59,7 @@ if __name__ == '__main__':
 
     print("-----------train/test split starts---------")
     x_train, x_test, y_train, y_test = train_test_split(
-        X_scaled, y, test_size=0.20, random_state=42) # default 42
+        X_scaled, y, test_size=0.20, random_state=42) 
     
     print("-------------setting network param---------")
     batch_size = 28
