@@ -10,7 +10,7 @@ import numpy as np
 
 def meshFeatures(input_Dir):
     """
-    Read a list of vtk files and save vertex coordinates of each mesh
+    Read a list of vtk files and save vertex coordinates of each mesh 
     in one row of the matrix data.
     
     input_Dir     : Directory, where the VTK meshes are saved
