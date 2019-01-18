@@ -18,7 +18,7 @@ The files **X.csv** formed our feature vectors and were directly fed to our clas
 **variationalAE_MLP.py**: uses a deep variational autoencoder (**VAE**) to learn a latent feature representation from the low-level features and trains a multi-layer perceptron (**MLP**) for two class classification purpose.
 
 # Citation
-If you would like to use our **code** in your research, please the following paper.
+If you would like to use our **code** in your research, please cite the following paper.
 
 ```
 @inproceedings{shakeri2016Spectral,
