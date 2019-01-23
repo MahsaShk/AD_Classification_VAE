@@ -21,6 +21,25 @@ from sklearn import preprocessing
 from sklearn.utils import shuffle
 from sklearn.metrics import precision_recall_fscore_support
 
+def sampling(args):  
+    z_mean, z_log_std = args
+    batch = K.shape(z_mean)[0]
+    dim = K.int_shape(z_mean)[1]
+    epsilon = K.random_normal(shape=(batch, dim))
+    return z_mean + K.exp(z_log_std) * epsilon
+
+def combine_mean_std(args):
+    z_mean, z_log_std = args
+    return z_mean + K.exp(z_log_std)
+
+def scheduler(epoch):
+    K.set_value(vae.optimizer.lr, LearningRate[epoch-1])
+    return float(K.get_value(vae.optimizer.lr))
+
+def vae_loss(x, x_decoded_mean):
+    xent_loss = objectives.binary_crossentropy(x, x_decoded_mean) #
+    kl_loss = - 0.5 * K.mean(1 + z_log_std - K.square(z_mean) - K.exp(z_log_std), axis=-1)
+    return K.mean(xent_loss + kl_loss)
 
 if __name__ == '__main__':
     
@@ -78,13 +97,7 @@ if __name__ == '__main__':
     z_mean = Dense(latent_dim)(h1_do)
     z_log_std = Dense(latent_dim)(h1_do)
     
-    def sampling(args):  
-        z_mean, z_log_std = args
-        batch = K.shape(z_mean)[0]
-        dim = K.int_shape(z_mean)[1]
-        epsilon = K.random_normal(shape=(batch, dim))
-        return z_mean + K.exp(z_log_std) * epsilon
-    
+   
     z = Lambda(sampling, output_shape=(latent_dim,))([z_mean, z_log_std])
     z_do = Dropout(0.5)(z)    
     decoder_h = Dense(intermediate_dim1, activation='relu', kernel_initializer='lecun_uniform', kernel_regularizer=l2(0.05))
@@ -94,20 +107,10 @@ if __name__ == '__main__':
     x_decoded_mean = decoder_mean(h_decoded)
 
     #Define MLP
-    def combine_mean_std(args):
-        z_mean, z_log_std = args
-        return z_mean + K.exp(z_log_std)
-    
     MLP_in = Lambda(combine_mean_std, output_shape=(latent_dim,))([z_mean, z_log_std])
     MLP_in_do = Dropout(0.5)(MLP_in)
     MLP1 = Dense (latent_dim, activation='relu', kernel_initializer='lecun_uniform', kernel_regularizer=l2(0.05))(MLP_in_do)#, W_regularizer=l2(0.01)
     sftmx = Dense(n_classes, activation='softmax', name='classification_out')(MLP1)
-
-    def vae_loss(x, x_decoded_mean):
-        xent_loss = objectives.binary_crossentropy(x, x_decoded_mean) #
-        kl_loss = - 0.5 * K.mean(1 + z_log_std - K.square(z_mean) - K.exp(z_log_std), axis=-1)
-        return K.mean(xent_loss + kl_loss)
-
 
     vae = Model(input=x, output=[x_decoded_mean, sftmx])
     vae.compile(optimizer='rmsprop', loss={'vae_output': vae_loss, 'classification_out': 'categorical_crossentropy'}, metrics={'classification_out': 'accuracy'})
@@ -116,10 +119,6 @@ if __name__ == '__main__':
     LearningRate = np.logspace(-5, -6, num=nb_epoch)
     LearningRate = LearningRate.astype('float32')
     K.set_value(vae.optimizer.lr, LearningRate[0])    
-    def scheduler(epoch):
-        K.set_value(vae.optimizer.lr, LearningRate[epoch-1])
-        return float(K.get_value(vae.optimizer.lr))
-
     change_lr = LearningRateScheduler(scheduler)
 
     timestr = time.strftime("%Y%m%d-%H%M%S")
