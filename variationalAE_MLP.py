@@ -13,6 +13,7 @@ from keras.callbacks import (EarlyStopping,
                              ModelCheckpoint,
                              History)
 from keras.regularizers import l2
+from keras.utils.np_utils import to_categorical
 import time
 import glob
 from sklearn.cross_validation import train_test_split
@@ -126,7 +127,7 @@ if __name__ == '__main__':
     early_stopping = EarlyStopping(monitor='val_loss', patience=60, verbose=1, mode='auto') 
     checkpointer = ModelCheckpoint(filepath="./data/weights_resunet_"+ timestr + ".hdf5", verbose=1, save_best_only=True)    
     print ("-------------network fit starts----------------")
-    from keras.utils.np_utils import to_categorical
+    
     history = History()
     fitlog = vae.fit({'input': x_train}, {'vae_output': x_train, 'classification_out': to_categorical(y_train-1)},
             shuffle=True,
