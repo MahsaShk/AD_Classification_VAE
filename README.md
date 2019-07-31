@@ -11,6 +11,8 @@ The original data comes from the popular brain imaging dataset in Alzheimer’s 
 
 The folder data includes four sub-folders (NC, AD, EMCI, LMCI). Each folder contains two sub-directories (17 and 53). All of the spectral meshes are saved here in vtk format. For instance, "data/NC/17/NC_1_17.vtk" is the left hippocampus mesh of the healthy subject 1, while "data/NC/53/NC_1_53.vtk" is the right hippocampus mesh of the same subject!
 
+![Screenshot](pics/left_right_hippocampus.png)
+
 ![Alt text](https://github.com/MahsaShk/AD_Classification_VAE/blob/master/left_right_hippocampus.png?raw=true "Left and right hippocampus meshes")
 
 # Code 
