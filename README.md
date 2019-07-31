@@ -10,7 +10,8 @@ Alzheimer’s disease (AD) and mild cognitive impairment (MCI) are the most prev
 The original data comes from the popular brain imaging dataset in Alzheimer’s disease, namely the Alzheimer’s Disease Neuroimaging Initiative (ADNI: adni.loni.usc.edu). For this study, a subset of latest 1.5 T MR images is used including 150 normal controls (NC), 90 AD patients, 160 early MCI (EMCI), and 160 individuals with late MCI (LMCI). Left (label number 17) and right (label number 53)hippocampi were segmented using FSL-FIRST automatic segmentation software package. Some subjects were removed because of the failure in the preprocessing steps. Therefore, in total, 142 normal controls (NC), 83 AD patients, 154 early MCI (EMCI), and 150 individuals with late MCI (LMCI) were included in our analysis.
 
 The folder data includes four sub-folders (NC, AD, EMCI, LMCI). Each folder contains two sub-directories (17 and 53). All of the spectral meshes are saved here in vtk format. For instance, "data/NC/17/NC_1_17.vtk" is the left hippocampus mesh of the healthy subject 1, while "data/NC/53/NC_1_53.vtk" is the right hippocampus mesh of the same subject!
-![Alt text](https://github.com/MahsaShk/AD_Classification_VAE/blob/master/left_right_hippocampus.png?raw=true "Title")
+
+![Alt text](https://github.com/MahsaShk/AD_Classification_VAE/blob/master/left_right_hippocampus.png?raw=true "Left and right hippocampus meshes")
 
 # Code 
 **InputData.py**: Read VTK meshes to a numpy matrix. 
@@ -19,6 +20,8 @@ This code creates NC.csv, AD.csv, EMCI.csv, and LMCI.csv files. Each row in <X>.
 The files **X.csv** formed our feature vectors and were directly fed to our classification framework. 
 
 **variationalAE_MLP.py**: uses a deep variational autoencoder (**VAE**) to learn a latent feature representation from the low-level features and trains a multi-layer perceptron (**MLP**) for two class classification purpose.
+
+![Alt text](https://github.com/MahsaShk/AD_Classification_VAE/blob/master/VAE-MLP-white.png?raw=true "VAE-MLP architecture")
 
 # Citation
 If you would like to use our **code** in your research, please cite the following paper.
