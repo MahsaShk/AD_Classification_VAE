@@ -123,9 +123,9 @@ if __name__ == '__main__':
     change_lr = LearningRateScheduler(scheduler)
 
     timestr = time.strftime("%Y%m%d-%H%M%S")
-    filepath="./data/weights_resunet_"+ timestr + ".hdf5"
+    filepath="./data/weights_"+ timestr + ".hdf5"
     early_stopping = EarlyStopping(monitor='val_loss', patience=60, verbose=1, mode='auto') 
-    checkpointer = ModelCheckpoint(filepath="./data/weights_resunet_"+ timestr + ".hdf5", verbose=1, save_best_only=True)    
+    checkpointer = ModelCheckpoint(filepath="./data/weights_"+ timestr + ".hdf5", verbose=1, save_best_only=True)    
     print ("-------------network fit starts----------------")
     
     history = History()
